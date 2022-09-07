@@ -43,8 +43,8 @@ public class TechJobs {
                 } else {
 
                     ArrayList<String> results = JobData.findAll(columnChoice);
-
-                    System.out.println("\n*** All " + columnChoices.get(columnChoice) + " Values ***");
+                    System.out.println();
+                    System.out.println("*** All " + columnChoices.get(columnChoice) + " Values ***");
 
                     // Print list of skills, employers, etc
                     for (String item : results) {
@@ -58,7 +58,8 @@ public class TechJobs {
                 String searchField = getUserSelection("Search by:", columnChoices);
 
                 // What is their search term?
-                System.out.println("\nSearch term:");
+                System.out.println();
+                System.out.println("Search term:");
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
@@ -86,8 +87,8 @@ public class TechJobs {
         }
 
         do {
-
-            System.out.println("\n" + menuHeader);
+            System.out.println();
+            System.out.println(menuHeader);
 
             // Print available choices
             for (int j = 0; j < choiceKeys.length; j++) {
@@ -119,7 +120,27 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-
-        System.out.println("printJobs is not implemented yet");
+        // check if the somejobs arraylist parameter is empty using an if/else
+        if (someJobs.isEmpty()) {
+            System.out.print("No Results");
+        } else {
+            // iterate over an ArrayList of jobs. Each job is itself a HashMap.
+            // for loop through the someJobs array. It contains the hashmap from the csv data made in the
+            // loaddata method in the jobdata class
+            // it will print each hashmap in the arraylist
+            for (int i = 0; i < someJobs.size(); i++) {
+                // print a blank println to pass grader \n makes it fail on Windows, thanks Rich!
+                System.out.println();
+                //print the first asterisk separator
+                System.out.println("*****");
+                //nest a for loop so the hashmap in the arraylist can print each key pair/set on separate lines
+                //I started typing the nested loop and intellij finished it
+                for (String key : someJobs.get(i).keySet()) {
+                    System.out.println(key + ": " + someJobs.get(i).get(key));
+                }
+                // print the second asterisk separator outside the nested loop
+                System.out.println("*****");
+            }
+        }
     }
 }
