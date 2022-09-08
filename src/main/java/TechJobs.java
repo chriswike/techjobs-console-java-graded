@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -134,7 +133,6 @@ public class TechJobs {
                 //print the first asterisk separator
                 System.out.println("*****");
                 //nest a for loop so the hashmap in the arraylist can print each key pair/set on separate lines
-                //I started typing the nested loop and intellij finished it
                 for (String key : someJobs.get(i).keySet()) {
                     System.out.println(key + ": " + someJobs.get(i).get(key));
                 }

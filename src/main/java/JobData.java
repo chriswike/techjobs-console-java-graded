@@ -94,12 +94,20 @@ public class JobData {
 
         // load data, if not already loaded
         loadData();
-        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
-        for (int i = 0; i < allJobs.size(); i++) {
+        // make a new arraylist that contains a hashmap to store job entry
+        // then iterate through columns and jobs entries
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        // loop through alljobs following the existing findbycolumandvalue as an example
+        for (int i = 0; i < allJobs.size(); i++){
+            // use a nested loop where the Map.Entry becomes job
             for (Map.Entry<String,String> job : allJobs.get(i).entrySet()) {
+                // get job value
                 String aValue = job.getValue();
+                //make everything lowercase
+                // check if aValue contains the value (searchTerm)
                 if (aValue.toLowerCase().contains(value.toLowerCase())) {
+                    // if jobs does not contained in alljobs then add it else it should skip it
                     if (!jobs.contains(allJobs.get(i))) {
                         jobs.add(allJobs.get(i));
                     }
