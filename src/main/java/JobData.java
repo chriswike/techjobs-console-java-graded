@@ -51,7 +51,10 @@ public class JobData {
         loadData();
 
         // Bonus mission; normal version returns allJobs
-        return new ArrayList<>(allJobs);
+        new ArrayList<>(allJobs);
+        ArrayList<HashMap<String, String>> allJobsCopy = new ArrayList<>(List.copyOf(allJobs));
+
+        return new ArrayList<>(allJobsCopy);
     }
 
     /**
@@ -99,17 +102,17 @@ public class JobData {
         // then iterate through columns and jobs entries
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
         // loop through alljobs following the existing findbycolumandvalue as an example
-        for (int i = 0; i < allJobs.size(); i++){
+        for (HashMap<String, String> allJob : allJobs) {
             // use a nested loop where the Map.Entry becomes job
-            for (Map.Entry<String,String> job : allJobs.get(i).entrySet()) {
+            for (Map.Entry<String, String> job : allJob.entrySet()) {
                 // get job value
                 String aValue = job.getValue();
                 //make everything lowercase
                 // check if aValue contains the value (searchTerm)
                 if (aValue.toLowerCase().contains(value.toLowerCase())) {
-                    // if jobs does not contained in alljobs then add it else it should skip it
-                    if (!jobs.contains(allJobs.get(i))) {
-                        jobs.add(allJobs.get(i));
+                    // if not contained in jobs then add it. Otherwise it should skip it
+                    if (!jobs.contains(allJob)) {
+                        jobs.add(allJob);
                     }
                 }
             }

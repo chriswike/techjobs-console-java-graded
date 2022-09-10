@@ -129,6 +129,7 @@ public class TechJobs {
             // it will print each hashmap in the arraylist
             for (int i = 0; i < someJobs.size(); i++) {
                 // print a blank println to pass grader \n makes it fail on Windows, thanks Rich!
+                //\n mac 0x0d LF (Linefeed) windows 0x0d 0x0a CR+LF(Carrige Return + LineFeed)
                 System.out.println();
                 //print the first asterisk separator
                 System.out.println("*****");
